@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Technical Doc Page</title>
+
+</head>
+
+<body>
+    <div class="main-body">
+        <nav id="navbar">
+            <header class="logo">Shell Linux Documentation</header>
+
+            <a href="#top-int" class="nav-link">Introduction</a>
+            <a href="#shell" class="nav-link">Command Line Fundamentals:Unix and Bash</a>
+            <a href="#shell1" class="nav-link">Using Unix Overview</a>
+            <a href="#shell2" class="nav-link">Linux and vi Editor Fundamentals</a>
+            <a href="#shell3" class="nav-link">Environment and User Variables</a>
+            <a href="#shell4" class="nav-link">How to configure vi/vim</a>
+            
+        </nav>
+
+        <main id="main-doc">
+            <section class="main-section" id="top-int">
+                <header>Introduction</header>
+
+                <p>
+                    The shell is the layer that surrounds the kernel(core operating system. It is he who talks to the
+                    hardware indicating what should be done.).the shell is
+                    the command interpreter that transmits to the kernel what is to be performed. </p>
+                <p> </p>
+
+            </section>
+
+            <section class="main-section" id="shell">
+                <header>Command Line Fundamentals:Unix and Bash</header>
+                <hr>
+                <p>
+                    Unix is an operating system, all SHARCNET systems run some variant of Unix (eg. Linux)
+                    Most Unix-based systems have a GUI interface, but the command line offers more complex and abstract
+                    interactions with far less effort
+                    At login the system starts a shell process for you which acts as your command line interpreter to
+                    interface with the operating system
+                    Borne Again Shell ( bash ) is the default shell at SHARCNET
+                    Common terms
+                    File
+                    data stored in a standard format that behaves in a certain way depending on it’s function in the
+                    system; everything is a file in Unix
+                    Program
+                    a file that can be executed (run)
+                    Process
+                    a program that is being executed (eg. your computing job is made of one or more processes)
+                    Ownership
+                    files/programs/processes are owned by a user and group
+                    Hierarchical Directory Structure
+                    files are organized in directories (folders) that can have a parent, eg. /home/$USER/sim1
+                    The base of the hierarchy is root , ie: / (forward-slash)
+                    Managing your files and processes is crucial to effectively using the systems!
+
+                </p>
+
+                <h4>Executing Commands:</h4>
+
+                <p> To run a command you simply type its name in and hit Enter↲
+                    The command must be in your $PATH and be executable (we’ll get to that later…)
+                    General syntax of a command:
+                    <br /> <br />
+                    <code>
+                        $ command [[-]option(s)] [option argument(s)] [command argument(s)]
+                    </code>
+
+                    <br />
+                    <ol>
+                        <li> command: the name of the command or utility: ls, man, cat, mv</li>
+
+                        <li> options: change the behaviour of the basic command: ls -l vs. ls
+                            may or may not be preceded by “-”</li>
+
+                        <li> option arguments: change the behaviour of an option: tail –c 5 file1 vs. tail –c 15 file1
+                        </li>
+
+                        <li> command arguments: what is affected by the command, usually files or the output of another
+                            command</li>
+
+
+                    </ol>
+                </p>
+                <p>
+                    <h4>Basic Comands:</h4>
+
+                    <ul>
+                        <li> Getting help with commands (the most important command!):</li>
+                        man
+
+                        <li>Figuring out who we are and where we are:</li>
+                        whoami, hostname, date
+
+                        <li>Navigating directories:</li>
+                        cd, pwd
+
+                        <li>Manipulating files and directories:</li>
+                        cp, mv, rm, rmdir, mkdir
+
+                        <li>Listing files and their properties:</li>
+                        ls, file
+
+                        <li>Displaying the contents of files:</li>
+                        cat, tail, head, more, wc
+
+                        <li>Investigating running programs:</li>
+                        ps, top
+
+
+                    </ul>
+                </p>
+                <a
+                    href="https://www.sharcnet.ca/help/index.php/Command_Line_Fundamentals:_Unix_and_Bash#Basic_UNIX_concepts">Read
+                    more</a>
+            </section>
+            <br />
+            <section class="main-section" id="shell1">
+                <header>Using Unix Overview</header>
+                <hr>
+                <h4>Key Features</h4>
+                <p>Unix Architecture page on Wikipedia
+                    <br /><br />
+                    Files are stored on disk in a hierarchical file system, with a single top location throughout the
+                    system (root, or "/"), with both files and directories, subdirectories, sub-subdirectories, and so
+                    on below it.
+                    With few exceptions, devices and some types of communications between processes are managed and
+                    visible as files or pseudo-files within the file system hierarchy. This is known as everything's a
+                    file.
+
+                    Doug McIlroy (inventor of Unix pipes)
+
+                    This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work
+                    together. Write programs to handle text streams, because that is a universal interface
+                </p>
+                <h4>File system</h4>
+
+                <p> Key differences from Windows
+                    <br />
+                    <ul>
+                        <li>there are mount points instead of A:, C:, etc.</li>
+                        <li>directories and files are case sensitive</li>
+                        <li>the separation character is / instead of \</li>
+                    </ul>
+                </p>
+                <h4>Root(/)</h4>
+                <p>
+                    <code>/boot</code>&nbsp;
+                    Boot loader files
+                    <br />
+                    <code>/etc</code>
+                    Configuration files&nbsp;
+                    <br />
+                    <code>/dev</code>&nbsp;
+                    Device files
+                    <br />
+                    <code>/bin</code>&nbsp;
+                    User programs required for booting
+                    <br />
+                    <code>/sbin</code>&nbsp;
+                    System programs required for booting
+                    <br />
+                    <code>/lib{,32,64}</code>&nbsp;
+                    Libraries required for booting
+                    <br />
+                    <code>/usr</code>&nbsp;
+                    Programs, libraries, and such not required for booting
+                    <br />
+                    <code>/root</code> &nbsp;
+                    superuser directory
+
+                    <br />
+                    <code>/home</code>&nbsp;
+                    Users directories (shared by all clusters)
+                    <br />
+                    <code>/tmp</code>&nbsp;
+                    Temporary files
+                    <br />
+                    <code>/var</code>&nbsp;
+                    Variable data (spool files, log files, etc.)
+                    <br />
+                    <code>/opt</code>&nbsp;
+                    Add on package directory
+                    <br />
+                    <code>/media</code>&nbsp;
+                    mount point for removable media
+                    <br />
+                    <code>/proc</code>&nbsp;
+                    process information pseudo-file system
+                    <br />
+                    <code>/sys</code>&nbsp;
+                    system information pseudo-file system
+
+
+                </p>
+                <a href="https://www.sharcnet.ca/help/index.php/Using_Unix_Overview">Read
+                    more</a>
+
+            </section>
+            <br />
+            <section class="main-section" id="shell2">
+                <header>Linux and vi Editor Fundamentals</header>
+                <hr>
+                <h4>Objectives</h4>
+
+                <p>This self-directed tutorial is mainly for people who have none or very little experience in Linux
+                    system, particularly for Windows users who want to migrate to SHARCNET Linux systems. Examples shown
+                    in the lightgrey areas were run on 'narwhal', a SHARCNET cluster. We hope that this tutorial would
+                    be a good starting point for newcomers to Linux.</p>
+                <h4>What is Linux?</h4>
+                <p>Linux is a free Unix-type operating system originally created by Linus Torvalds with the assistance
+                    of developers around the world in the 90's. Linux is becoming popular as a powerful, low-cost
+                    operating system for cluster servers.
+                </p>
+                <h4>Linux Features</h4>
+                <ul>
+                    <li>
+                        multitasking: Several programs running at once
+                    </li>
+                    <li>
+                        multiusers: Several users at the same machine at once
+                    </li>
+                    <li>
+                        Multiplatforms: it runs on many different CPU
+                    </li>
+                </ul>
+                <a href="https://www.sharcnet.ca/help/index.php/Linux_and_vi_Editor_Fundamentals">Read
+                    more</a>
+                <br />
+            </section>
+            <br />
+            <section class="main-section" id="shell3">
+                <header>Environment variables, initialization, and scripts</header>
+                <hr>
+                <h4>Environment variables</h4>
+                <p>The shell environment allows one to store values in environment variables
+                    Many are provided by default when you login, eg. $USER , $HOME , $PWD , $PATH
+                    $ expands the value of a variable:</p>
+                <code>beaker@dtn:~$ echo $PATH
+                        <br/>
+                        /bin:/usr/bin
+                    </code>
+                <p>The export command allows one to set new variables or modify existing ones, for example, to add a
+                    directory to the beginning of your $PATH environment variable:</p>
+                <code>
+                            beaker@dtn:~$ export PATH=$HOME/bin:$PATH<br/>
+                            beaker@dtn:~$ echo $PATH<br/>
+                            /home/beaker/bin:/bin:/usr/bin
+                    </code>
+                <h4>Command aliases</h4>
+                <p>The alias command allows you to build new commands
+                    <br />For example, one can set up an alias to run a command with particular, common switches:</p>
+                <code>alias lsfull=’ls -larth’</code>
+                <p>Now when one runs lsfull it will automatically expand to execute ls with the -larth switches /
+                    options<br />
+                    One can also use environment variables and pipes, etc.:
+                    <br /><br />
+                    <code>
+                                    alias wh='echo "["$USER"] ["$HOSTNAME"] ["$PWD"] ["`date`"] ["`uptime`"]"'<br/>
+                                    alias psme='ps aux | grep $USER | grep -v grep'
+                            </code></p><br /><br />
+
+                    <a href="https://www.sharcnet.ca/help/index.php/Command_Line_Fundamentals:_Unix_and_Bash">Read
+                        more</a>
+            </section>
+            <br />
+            <section class="main-section" id="shell4">
+                <header>How to configure vi/vim</header>
+                <hr>
+                <h4>Introduction</h4>
+
+                <p>The vim console text editor can be started by typing vim.
+                    A graphical version is also available on most Sharcnet systems: gvim.
+                    For a complete list of command line options run the command vim -h or read the manpage by executing
+                    man vim.
+                </p>
+
+                <h4>Version Selection</h4>
+                <p>Note that vim is provided as part of the default user environment on all sharcnet systems so its not
+                    necessary to load a vim module before using it.
+                    o On the remaining XC cluster, requin, vim 7.2 is installed as a module and loaded by default. Note
+                    that one can do "module unload vim" to fall back to the default 6.3 system version.</p>
+                <h4>Job Submission</h4>
+                <p>Not applicable.</p>
+
+                <h4>General Notes</h4>
+                <p>Different systems may have different versions of vi and vim. While it is useful to know the original
+                    set of vi commands and behavior when dealing with older systems, most modern systems use vim. On
+                    SHARCNET systems vi is actually an alias to vim.
+                </p>
+                <code>Configuring vim: ~/.vimrc</code>
+                <p>To ensure you have a consistent vim experience across systems it is recommended that you create a
+                    personal
+                    vim configuration file in your home directory:</p><br />
+                <code>/home/$USER/.vimrc</code>
+                <p>You can set configuration statements in this file to change the behavior of the vim editing
+                    environment at initialization. Here is an example file:</p>
+                <code>
+                        [snuser@nar317 ~]$ cat ~/.vimrc<br/>
+                        set nocompatible<br/>
+                        set autoindent<br/>
+                        set smartindent<br/>
+                        set tabstop=4<br/>
+                        set shiftwidth=4<br/>
+                        set showmatch<br/>
+                        set ruler<br/>
+                        set incsearch<br/>
+                        syntax on<br/>
+                        [snuser@nar317 ~]$<br/>
+                </code>
+                <br />
+                <a href="https://www.sharcnet.ca/help/index.php/VIM#Configuration">Read
+                    more</a>
+                <hr>
+                <hr>
+                <a href="#top">Back to the top</a>
+            </section>
+
+        </main>
+    </div>
+</body>
+
+</html>

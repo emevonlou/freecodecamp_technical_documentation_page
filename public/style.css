@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500,700');
+.logo {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 32px;
+}
+
+code {
+    color: rgb(148, 200, 136);
+    font-size: 20px;
+}
+
+h4 {
+    color: rgb(51, 144, 35);
+    font-family: "Ubuntu", sans-serif;
+}
+
+#nav#navbar {
+    grid-area: navbar;
+    position: fixed;
+}
+
+header:hover {
+    color: #9AFF9A;
+}
+
+nav#navbar a {
+    border: 1px solid rgb(176, 216, 158);
+    margin: 0.5em;
+    padding: 0.5em;
+    font-family: "Ubuntu", sans-serif;
+    display: block;
+    border-radius: 5px;
+}
+
+div.main-body {
+    display: grid;
+    grid-template-columns: minmax(200px, auto) 1fr;
+    grid-gap: 20px;
+    line-height: 1.3;
+    grid-template-areas: "navbar mainContent";
+}
+
+main#main-doc {
+    grid-area: mainContent;
+    font-family: "Ubuntu", sans-serif;
+}
+
+a:hover {
+    color: #9AFF9A;
+}
+
+a {
+    color: green;
+}
+
+header {
+    color: rgb(47, 180, 13);
+    margin: 6px;
+    font-size: 20px;
+}
+
+.nav-link {
+    color: #222;
+    padding: 3px;
+}
+
+@media screen and (max-width: 760px) {
+    div.main-body {
+        grid-template-columns: 1fr;
+        grid-template-areas: "navbar" "mainContent";
+    }
+    nav#navbar {
+        position: inherit;
+    }
+}
